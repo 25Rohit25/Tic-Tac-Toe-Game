@@ -32,5 +32,5 @@ A glowing-themed, fully functional **Tic Tac Toe** game built using **HTML, CSS*
 
 ---
 
-## 📂 Project Structure
+
 
