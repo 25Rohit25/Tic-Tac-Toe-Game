@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>⚡ Ultimate Tic Tac Toe</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <h1>✨ Tic Tac Toe ✨</h1>
+
+  <div class="controls">
+    <input id="playerO" type="text" placeholder="Player O" />
+    <input id="playerX" type="text" placeholder="Player X" />
+
+    <select id="mode">
+      <option value="pvp">Play vs Player</option>
+      <option value="ai">Play vs AI</option>
+    </select>
+
+    <select id="theme">
+      <option value="classic">Classic</option>
+      <option value="emoji">Emoji</option>
+    </select>
+
+    <button id="resetBtn">Reset</button>
+    <button id="newGameBtn">New Game</button>
+    <button id="undoBtn">Undo</button>
+    <button id="toggleDark" class="audio-toggle">🌙</button>
+  </div>
+
+  <div id="timer">10s</div>
+
+  <div class="scoreboard">
+    <strong id="scoreO">Player O: 0</strong> &nbsp;
+    <strong id="scoreX">Player X: 0</strong>
+  </div>
+
+  <div class="container">
+    <div class="game">
+      <button class="box" data-index="0"></button>
+      <button class="box" data-index="1"></button>
+      <button class="box" data-index="2"></button>
+      <button class="box" data-index="3"></button>
+      <button class="box" data-index="4"></button>
+      <button class="box" data-index="5"></button>
+      <button class="box" data-index="6"></button>
+      <button class="box" data-index="7"></button>
+      <button class="box" data-index="8"></button>
+    </div>
+  </div>
+
+  <div class="msg-container" id="msgContainer">
+    <p id="msgText">🎉 Player O Wins!</p>
+  </div>
+
+  <div class="leaderboard" id="leaderboard">
+    <h3>🏆 Leaderboard</h3>
+    <ul id="leaderboardList">
+      <!-- Entries populated by JS -->
+    </ul>
+  </div>
+
+  <audio id="moveSound" src="assets/move.wav" preload="auto"></audio>
+  <audio id="winSound" src="assets/win.wav" preload="auto"></audio>
+
+  <script src="app.js"></script>
+</body>
+</html>

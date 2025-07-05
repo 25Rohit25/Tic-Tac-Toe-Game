@@ -1,0 +1,226 @@
+/* style.css - Premium Gaming Theme for Tic Tac Toe */
+
+:root {
+  --bg-color: #0e0e12;
+  --text-color: #ffffff;
+  --accent: #ffc107;
+  --accent-hover: #ffd54f;
+  --timer-bg: #21232b;
+  --timer-fill: #00e676;
+  --box-bg: #1b1e23;
+  --box-x: #ff5252;
+  --box-o: #40c4ff;
+  --win-glow: #ffeb3b;
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  --audio-button: #8e24aa;
+  --audio-button-hover: #ba68c8;
+  --leaderboard-bg: #181a20;
+}
+
+body.dark-mode {
+  --bg-color: #000000;
+  --text-color: #e0e0e0;
+  --accent: #ffeb3b;
+  --accent-hover: #fff176;
+  --timer-bg: #101218;
+  --timer-fill: #00ffc3;
+  --box-bg: #0a0c10;
+  --box-x: #ff8a80;
+  --box-o: #80d8ff;
+  --win-glow: #fff59d;
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 1rem;
+  text-align: center;
+  transition: background-color 0.5s ease;
+}
+
+h1 {
+  font-size: 3rem;
+  color: var(--accent);
+  text-shadow: 0 0 15px var(--accent);
+  margin-bottom: 1rem;
+}
+
+.header, .controls, .scoreboard, .msg-container {
+  margin-bottom: 1rem;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.controls input, .controls select, .controls button {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 2px solid var(--accent);
+  background-color: #1c1f26;
+  color: var(--text-color);
+  box-shadow: var(--shadow);
+  transition: all 0.3s;
+}
+
+.controls button:hover {
+  background-color: var(--accent-hover);
+  color: #000;
+  cursor: pointer;
+}
+
+.audio-toggle {
+  background-color: var(--audio-button);
+  border-color: var(--audio-button);
+}
+
+.audio-toggle:hover {
+  background-color: var(--audio-button-hover);
+}
+
+#timer {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: conic-gradient(var(--timer-fill) calc(var(--progress, 0) * 360deg), var(--timer-bg) 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--text-color);
+  border: 3px solid var(--accent);
+  box-shadow: var(--shadow);
+  transition: background 0.5s ease;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.game {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(80px, 100px));
+  grid-gap: 15px;
+  justify-content: center;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  font-size: 2.4rem;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--box-bg);
+  color: var(--text-color);
+  transition: 0.3s;
+  box-shadow: var(--shadow);
+  text-shadow: 0 0 6px var(--text-color);
+  cursor: pointer;
+}
+
+.box.animated-x {
+  color: var(--box-x);
+  animation: pop 0.3s ease-in-out;
+  text-shadow: 0 0 12px var(--box-x);
+}
+
+.box.animated-o {
+  color: var(--box-o);
+  animation: pop 0.3s ease-in-out;
+  text-shadow: 0 0 12px var(--box-o);
+}
+
+@keyframes pop {
+  0% { transform: scale(0.7); opacity: 0.3; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+.win-highlight {
+  border: 2px solid var(--win-glow);
+  box-shadow: 0 0 25px var(--win-glow);
+}
+
+.msg-container {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--accent);
+  text-shadow: 0 0 8px var(--accent);
+  display: none;
+}
+
+.msg-container.show {
+  display: block;
+  animation: fadeIn 0.4s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Leaderboard */
+.leaderboard {
+  background-color: var(--leaderboard-bg);
+  color: var(--text-color);
+  margin: 1rem auto;
+  max-width: 300px;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  border: 2px solid var(--accent);
+  box-shadow: var(--shadow);
+  text-align: left;
+}
+
+.leaderboard h3 {
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+  text-align: center;
+  text-shadow: 0 0 5px var(--accent);
+}
+
+.leaderboard ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.leaderboard li {
+  padding: 0.2rem 0;
+  border-bottom: 1px solid var(--box-bg);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+  .controls {
+    flex-direction: column;
+    align-items: center;
+  }
+  .game {
+    grid-template-columns: repeat(3, 80px);
+    grid-gap: 10px;
+  }
+  .box {
+    font-size: 2rem;
+  }
+  #timer {
+    width: 60px;
+    height: 60px;
+    font-size: 0.9rem;
+  }
+}
